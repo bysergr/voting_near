@@ -27947,9 +27947,7 @@ function SignInPrompt({ onClick  }) {
 _c = SignInPrompt;
 function SignOutButton({ accountId , onClick  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-        style: {
-            float: "right"
-        },
+        className: "outB",
         onClick: onClick,
         children: [
             "Sign out ",
@@ -28183,16 +28181,19 @@ function Proposals({ proposals  }) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                                children: "Number of proposal: "
-                            }, void 0, false, {
+                                className: "cardTitle",
+                                children: [
+                                    "PROPOSAL ",
+                                    p.proposal_id
+                                ]
+                            }, void 0, true, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 28,
+                                lineNumber: 27,
                                 columnNumber: 13
                             }, this),
-                            p.proposal_id,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 30,
+                                lineNumber: 28,
                                 columnNumber: 13
                             }, this),
                             " ",
@@ -28200,46 +28201,46 @@ function Proposals({ proposals  }) {
                                 children: "Sent by:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 30,
+                                lineNumber: 28,
                                 columnNumber: 20
                             }, this),
                             " ",
                             p.sender,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 31,
+                                lineNumber: 29,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                 children: "Text: "
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 32,
+                                lineNumber: 30,
                                 columnNumber: 13
                             }, this),
                             p.text,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 34,
+                                lineNumber: 32,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                 children: "Votes:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 35,
+                                lineNumber: 33,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 36,
+                                lineNumber: 34,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                 children: "Option 1:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 37,
+                                lineNumber: 35,
                                 columnNumber: 13
                             }, this),
                             " ",
@@ -28248,7 +28249,7 @@ function Proposals({ proposals  }) {
                                 children: " - Option 2:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 38,
+                                lineNumber: 36,
                                 columnNumber: 13
                             }, this),
                             " ",
@@ -28257,7 +28258,7 @@ function Proposals({ proposals  }) {
                                 children: " - Option 3:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 39,
+                                lineNumber: 37,
                                 columnNumber: 13
                             }, this),
                             " ",
@@ -28265,7 +28266,7 @@ function Proposals({ proposals  }) {
                         ]
                     }, i, true, {
                         fileName: "components/Proposals.jsx",
-                        lineNumber: 27,
+                        lineNumber: 26,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
