@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Proposals({ proposals ,wallet,endMethod}) {  
+export default function Proposals({ proposals ,wallet, endProposal}) {  
   if(proposals.length === 0 ){
    return (
     <>
@@ -25,7 +25,7 @@ export default function Proposals({ proposals ,wallet,endMethod}) {
       {proposals.map((p, i) => (
         <div className="card">
           <p key={i}>
-            <strong className="cardTitle">PROPOSAL {p.proposal_id}</strong>
+            <strong className="cardTitle">PROPOSAL {p.proposal_id} - {p.decided == true && <p>Ended</p>}</strong>
             <br /> <strong>Sent by:</strong> {p.sender}
             <br />
             <strong>Text: </strong>
@@ -34,8 +34,9 @@ export default function Proposals({ proposals ,wallet,endMethod}) {
             <strong>Votes:</strong>
             <br />
             <strong>Option 1:</strong> {contarPorOpcion(1, p)}
-            <strong> - Option 2:</strong> {contarPorOpcion(2, p)}
-            {wallet.accountId == p.sender && <button className='endButton' onclick={endMethod}>End proposal </button>}
+            <strong> - Option 2:</strong> {contarPorOpcion(2, p)} 
+            { wallet.accountId == p.sender && p.decided == false && <button className='endButton' onclick={endProposal}>End proposal </button>
+            }
           </p>
         </div>
       ))}
