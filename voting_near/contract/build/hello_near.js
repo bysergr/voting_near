@@ -848,8 +848,8 @@ class PostedProposal {
   }
 }
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _class, _class2;
-let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec4 = call({}), _dec5 = call({}), _dec(_class = (_class2 = class VotingNear {
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _class2;
+let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec4 = call({}), _dec5 = call({}), _dec6 = call({}), _dec(_class = (_class2 = class VotingNear {
   proposals = new Vector("v-uid");
   // This method is read-only and can be called for free
   get_proposal({
@@ -866,6 +866,27 @@ let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec
     const sender = predecessorAccountId();
     const proposal = new PostedProposal(this.proposals.length, sender, text);
     this.proposals.push(proposal);
+  }
+  // This method changes the state, for which it cost gas
+  delete_proposal({
+    prop_id
+  }) {
+    log(`deleting proposal ${prop_id}`);
+    log(this.proposals);
+    let borrado = false;
+    //recibe una id, la busca y la borra
+    let propuestas = this.proposals;
+    //primero buscamos la posicion de acuerdo a la id de la propuesta
+    for (let i = 0; i < propuestas.length; i++) {
+      log('buscando elemento');
+      if (propuestas.get(i).proposal_id == prop_id) {
+        propuestas.swapRemove(i);
+        log('encontrado');
+        this.proposals = propuestas;
+        borrado = true;
+      }
+    }
+    return borrado;
   }
   set_winner({
     id
@@ -934,7 +955,7 @@ let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec
     this.proposals = propuestas;
     return votado;
   }
-}, (_applyDecoratedDescriptor(_class2.prototype, "get_proposal", [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, "get_proposal"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "set_proposal", [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, "set_proposal"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "set_winner", [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, "set_winner"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "vote_for", [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, "vote_for"), _class2.prototype)), _class2)) || _class);
+}, (_applyDecoratedDescriptor(_class2.prototype, "get_proposal", [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, "get_proposal"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "set_proposal", [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, "set_proposal"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "delete_proposal", [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, "delete_proposal"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "set_winner", [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, "set_winner"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "vote_for", [_dec6], Object.getOwnPropertyDescriptor(_class2.prototype, "vote_for"), _class2.prototype)), _class2)) || _class);
 function vote_for() {
   const _state = VotingNear._getState();
   if (!_state && VotingNear._requireInit()) {
@@ -960,6 +981,20 @@ function set_winner() {
   }
   const _args = VotingNear._getArgs();
   const _result = _contract.set_winner(_args);
+  VotingNear._saveToStorage(_contract);
+  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(VotingNear._serialize(_result, true));
+}
+function delete_proposal() {
+  const _state = VotingNear._getState();
+  if (!_state && VotingNear._requireInit()) {
+    throw new Error("Contract must be initialized");
+  }
+  const _contract = VotingNear._create();
+  if (_state) {
+    VotingNear._reconstruct(_contract, _state);
+  }
+  const _args = VotingNear._getArgs();
+  const _result = _contract.delete_proposal(_args);
   VotingNear._saveToStorage(_contract);
   if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(VotingNear._serialize(_result, true));
 }
@@ -991,5 +1026,5 @@ function get_proposal() {
   if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(VotingNear._serialize(_result, true));
 }
 
-export { get_proposal, set_proposal, set_winner, vote_for };
+export { delete_proposal, get_proposal, set_proposal, set_winner, vote_for };
 //# sourceMappingURL=hello_near.js.map

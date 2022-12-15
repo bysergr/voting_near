@@ -1,3 +1,4 @@
+DEFINE_NEAR_METHOD(delete_proposal)
 DEFINE_NEAR_METHOD(get_proposal)
 DEFINE_NEAR_METHOD(set_proposal)
 DEFINE_NEAR_METHOD(set_winner)

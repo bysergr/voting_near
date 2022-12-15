@@ -34,7 +34,6 @@ export default function Proposals({ proposals }) {
             <br />
             <strong>Option 1:</strong> {contarPorOpcion(1, p)}
             <strong> - Option 2:</strong> {contarPorOpcion(2, p)}
-            <strong> - Option 3:</strong> {contarPorOpcion(3, p)}
           </p>
         </div>
       ))}

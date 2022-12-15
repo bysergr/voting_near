@@ -47,13 +47,18 @@ export default function App({ isSignedIn, contractId, wallet }) {
     e.preventDefault();
     setUiPleaseWait(true);
     const { proposalId,proposalVote } = e.target.elements;
-
-    await wallet.callMethod({contractId:contractId, method: 'vote_for', args: { id:proposalId.value, voto:proposalVote.value}  })
+     //if(parseInt(proposalId.value ) < valueFromBlockchain.length && parseInt(proposalVote)<3 && parseInt(proposalVote)>0){
+    await wallet.callMethod({contractId:contractId, method: 'vote_for', args: { id:parseInt(proposalId.value), voto:parseInt(proposalVote.value)}  })
       .then(async () => {return getProposal();})
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
       });
+      alert('You have already voted');
+    //}
+    //else{
+      //alert('Utiliza un numero valido para votar')
+    //}
   }
 
   async function getProposal(f= 0, t= 10){
@@ -97,7 +102,33 @@ export default function App({ isSignedIn, contractId, wallet }) {
           </div>
         </form>
       <Proposals proposals={valueFromBlockchain} />
+      <h3>
+         Vote for  a proposal:
+        </h3>
+        <form onSubmit={voteProposal} className='formularioBonito' >
+          <label>You have to enter the number of the proposal, a 1 for approving  or a 2 for denying</label>
+          <div>
+            <label>Proposal number:</label>
+            <input
+              autoComplete="off"
+              defaultValue="0"
+              id="proposalId"
+              className='inputDecente'
+            />
+            <label>Vote option</label>
+             <input
+              autoComplete="off"
+              defaultValue="0"
+              id="proposalVote"
+              className='inputDecente'
+            />
 
+            <button className='botonDecente'>
+              <span>Vote</span>
+     
+            </button>
+          </div>
+        </form>
       <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
          
        

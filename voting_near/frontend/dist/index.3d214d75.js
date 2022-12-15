@@ -27158,18 +27158,23 @@ function App({ isSignedIn , contractId , wallet  }) {
         e.preventDefault();
         setUiPleaseWait(true);
         const { proposalId , proposalVote  } = e.target.elements;
+        //if(parseInt(proposalId.value ) < valueFromBlockchain.length && parseInt(proposalVote)<3 && parseInt(proposalVote)>0){
         await wallet.callMethod({
             contractId: contractId,
             method: "vote_for",
             args: {
-                id: proposalId.value,
-                voto: proposalVote.value
+                id: parseInt(proposalId.value),
+                voto: parseInt(proposalVote.value)
             }
         }).then(async ()=>{
             return getProposal();
         }).then(setValueFromBlockchain).finally(()=>{
             setUiPleaseWait(false);
         });
+    //}
+    //else{
+    //alert('Utiliza un numero valido para votar')
+    //}
     }
     async function getProposal(f = 0, t = 10) {
         // View method
@@ -27206,7 +27211,7 @@ function App({ isSignedIn , contractId , wallet  }) {
                     children: "Propose your idea here:"
                 }, void 0, false, {
                     fileName: "App.js",
-                    lineNumber: 81,
+                    lineNumber: 85,
                     columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -27217,7 +27222,7 @@ function App({ isSignedIn , contractId , wallet  }) {
                             children: "Add a new proposal:"
                         }, void 0, false, {
                             fileName: "App.js",
-                            lineNumber: 85,
+                            lineNumber: 89,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27229,7 +27234,7 @@ function App({ isSignedIn , contractId , wallet  }) {
                                     className: "inputDecente"
                                 }, void 0, false, {
                                     fileName: "App.js",
-                                    lineNumber: 87,
+                                    lineNumber: 91,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27238,45 +27243,125 @@ function App({ isSignedIn , contractId , wallet  }) {
                                         children: "Save"
                                     }, void 0, false, {
                                         fileName: "App.js",
-                                        lineNumber: 94,
+                                        lineNumber: 98,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "App.js",
-                                    lineNumber: 93,
+                                    lineNumber: 97,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "App.js",
-                            lineNumber: 86,
+                            lineNumber: 90,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "App.js",
-                    lineNumber: 84,
+                    lineNumber: 88,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _proposalsDefault.default), {
                     proposals: valueFromBlockchain
                 }, void 0, false, {
                     fileName: "App.js",
-                    lineNumber: 99,
+                    lineNumber: 103,
                     columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                    children: "Vote for  a proposal:"
+                }, void 0, false, {
+                    fileName: "App.js",
+                    lineNumber: 104,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                    onSubmit: voteProposal,
+                    className: "formularioBonito",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            children: "You have to enter the number of the proposal, a 1 for approving  or a 2 for denying"
+                        }, void 0, false, {
+                            fileName: "App.js",
+                            lineNumber: 108,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                    children: "Proposal number:"
+                                }, void 0, false, {
+                                    fileName: "App.js",
+                                    lineNumber: 110,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    autoComplete: "off",
+                                    defaultValue: "0",
+                                    id: "proposalId",
+                                    className: "inputDecente"
+                                }, void 0, false, {
+                                    fileName: "App.js",
+                                    lineNumber: 111,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                    children: "Vote option"
+                                }, void 0, false, {
+                                    fileName: "App.js",
+                                    lineNumber: 117,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    autoComplete: "off",
+                                    defaultValue: "0",
+                                    id: "proposalVote",
+                                    className: "inputDecente"
+                                }, void 0, false, {
+                                    fileName: "App.js",
+                                    lineNumber: 118,
+                                    columnNumber: 14
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    className: "botonDecente",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: "Save"
+                                    }, void 0, false, {
+                                        fileName: "App.js",
+                                        lineNumber: 126,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "App.js",
+                                    lineNumber: 125,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "App.js",
+                            lineNumber: 109,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "App.js",
+                    lineNumber: 107,
+                    columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _uiComponents.SignOutButton), {
                     accountId: wallet.accountId,
                     onClick: ()=>wallet.signOut()
                 }, void 0, false, {
                     fileName: "App.js",
-                    lineNumber: 101,
+                    lineNumber: 131,
                     columnNumber: 7
                 }, this)
             ]
         }, void 0, true, {
             fileName: "App.js",
-            lineNumber: 80,
+            lineNumber: 84,
             columnNumber: 7
         }, this)
     }, void 0, false);

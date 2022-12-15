@@ -19,6 +19,27 @@ class VotingNear {
     this.proposals.push(proposal); 
   }
 
+  @call({}) // This method changes the state, for which it cost gas
+  delete_proposal({ prop_id }: { prop_id: number }): boolean {
+    near.log(`deleting proposal ${prop_id}`);
+    near.log(this.proposals)
+    let borrado = false;
+    //recibe una id, la busca y la borra
+      let propuestas = this.proposals;
+    //primero buscamos la posicion de acuerdo a la id de la propuesta
+    for(let i=0; i<propuestas.length;i++){
+      near.log('buscando elemento')
+      if(propuestas.get(i).proposal_id == prop_id){
+        propuestas.swapRemove(i); 
+        near.log('encontrado')
+       this.proposals = propuestas;
+       borrado=true;
+      }
+    }
+    
+    return borrado;
+  }
+
   @call({})
   set_winner({id}:{id:number}): boolean {
     //near.log(this.proposals.get(id).setDecided())
