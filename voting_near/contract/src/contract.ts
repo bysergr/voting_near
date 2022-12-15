@@ -45,18 +45,18 @@ class VotingNear {
     //near.log(this.proposals.get(id).setDecided())
     //primero buscamos la propuesta
     let propuestas = this.proposals;
-    let p = propuestas.get(id);
     let state = false
-    if(p.sender == near.predecessorAccountId()){
-      //solamente la persona que la crea puede finalizarla
-      p.decided= true;
-    near.log('se ha definido "'+ p.text + '" como ganadora')
-   // near.log(p.setDecided());
-    //actualizamos la lista
-    propuestas.replace(id,p);
-    state=true;
+    for(let i=0; i<propuestas.length;i++){
+      near.log('buscando elemento');
+      if(propuestas.get(i).proposal_id == id && propuestas.get(i).sender == near.predecessorAccountId()){
+       let p = propuestas.get(i);
+       propuestas.replace(i,p);
+       p.decided= true; 
+        near.log('encontrado')
+        state=true;
+      }
     }
-    else {
+    if(state==false) {
       near.log('No eres la persona que creo la propuesta no puedes finalizarla')
     }
     this.proposals = propuestas;

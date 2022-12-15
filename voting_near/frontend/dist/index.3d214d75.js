@@ -27270,7 +27270,8 @@ function App({ isSignedIn , contractId , wallet  }) {
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _proposalsDefault.default), {
                     proposals: valueFromBlockchain,
-                    wallet: wallet
+                    wallet: wallet,
+                    endMethod: endProposal
                 }, void 0, false, {
                     fileName: "App.js",
                     lineNumber: 108,
@@ -28911,7 +28912,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-function Proposals({ proposals , wallet  }) {
+function Proposals({ proposals , wallet , endMethod  }) {
     if (proposals.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
             children: "At this moment there are no proposals"
@@ -29016,7 +29017,9 @@ function Proposals({ proposals , wallet  }) {
                             " ",
                             contarPorOpcion(2, p),
                             wallet.accountId == p.sender && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                children: "Eres el due\xf1o"
+                                className: "endButton",
+                                onclick: endMethod,
+                                children: "End proposal "
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
                                 lineNumber: 38,

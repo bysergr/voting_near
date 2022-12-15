@@ -105,7 +105,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
             </button>
           </div>
         </form>
-      <Proposals proposals={valueFromBlockchain} wallet = {wallet} endMethod={endProposal} />
+      <Proposals proposals={valueFromBlockchain} wallet = {wallet} endProposal={endProposal} />
       <h3>
          Vote for  a proposal:
         </h3>
