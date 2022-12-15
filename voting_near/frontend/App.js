@@ -7,49 +7,80 @@ import { EducationalText, SignInPrompt, SignOutButton } from './ui-components';
 
 
 export default function App({ isSignedIn, contractId, wallet }) {
-  const [valueFromBlockchain, setValueFromBlockchain] = React.useState();
+  const [valueFromBlockchain, setValueFromBlockchain] = React.useState([]);
 
   const [uiPleaseWait, setUiPleaseWait] = React.useState(true);
 
   // Get blockchian state once on component load
   React.useEffect(() => {
-    getGreeting()
+    getProposal()
       .then(setValueFromBlockchain)
       .catch(alert)
       .finally(() => {
         setUiPleaseWait(false);
       });
+      console.log(valueFromBlockchain);
     }
   , []);
 
   /// If user not signed-in with wallet - show prompt
   if (!isSignedIn) {
     // Sign-in flow will reload the page later
-    return <SignInPrompt greeting={valueFromBlockchain} onClick={() => wallet.signIn()}/>;
+    return <SignInPrompt onClick={() => wallet.signIn()}/>;
   }
 
-  function changeGreeting(e) {
+  async function addProposal(e) {
     e.preventDefault();
     setUiPleaseWait(true);
-    const { greetingInput } = e.target.elements;
+    const { proposalInput } = e.target.elements;
     
     // use the wallet to send the greeting to the contract
-    wallet.callMethod({ method: 'set_greeting', args: { message: greetingInput.value }, contractId })
-      .then(async () => {return getGreeting();})
+    await wallet.callMethod({contractId:contractId, method: 'set_proposal', args: { text: greetingInput.value }  })
+      .then(async () => {return getProposal();})
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
       });
   }
 
-  function getGreeting(){
-    // use the wallet to query the contract's greeting
-    return wallet.viewMethod({ method: 'get_greeting', contractId })
+  async function voteProposal(e){
+    e.preventDefault();
+    setUiPleaseWait(true);
+    const { proposalId,proposalVote } = e.target.elements;
+
+    await wallet.callMethod({contractId:contractId, method: 'vote_for', args: { id:proposalId.value, voto:proposalVote.value}  })
+      .then(async () => {return getProposal();})
+      .then(setValueFromBlockchain)
+      .finally(() => {
+        setUiPleaseWait(false);
+      });
   }
+
+  async function getProposal(f= 0, t= 10){
+    // View method
+    return await wallet.viewMethod({ contractId:contractId , method: 'get_proposal', args: { from_index:f, limit:t } })
+  }
+
+  async function endProposal(e){
+    e.preventDefault();
+    setUiPleaseWait(true);
+    const { idProposal } = e.target.elements;
+    
+    await wallet.callMethod({contractId:contractId, method: 'set_winner', args: { text: idProposal.value }  })
+      .then(async () => {return getProposal();})
+      .then(setValueFromBlockchain)
+      .finally(() => {
+        setUiPleaseWait(false);
+      });
+  }
+
 
   return (
     <>
-      <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
+      <h1>Hola mundo</h1>
+
+
+      {/* <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
       <main className={uiPleaseWait ? 'please-wait' : ''}>
         <h1>
           The contract says: <span className="greeting">{valueFromBlockchain}</span>
@@ -69,7 +100,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
           </div>
         </form>
         <EducationalText/>
-      </main>
+      </main> */}
     </>
   );
 }

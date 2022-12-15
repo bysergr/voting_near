@@ -1,23 +1,15 @@
 import React from 'react';
 
-export function SignInPrompt({greeting, onClick}) {
+export function SignInPrompt({ onClick }) {
   return (
     <main>
       <h1>
-        The contract says: <span className="greeting">{greeting}</span>
+        Welcome to votingNear
       </h1>
-      <h3>
-        Welcome to NEAR!
-      </h3>
       <p>
-        Your contract is storing a greeting message in the NEAR blockchain. To
-        change it you need to sign in using the NEAR Wallet. It is very simple,
+        Your contract is storing several proposals in the NEAR blockchain. To
+        vote them or propose a new one, you need to sign in using the NEAR Wallet. It is very simple,
         just use the button below.
-      </p>
-      <p>
-        Do not worry, this app runs in the test network ("testnet"). It works
-        just like the main network ("mainnet"), but using NEAR Tokens that are
-        only for testing!
       </p>
       <br/>
       <p style={{ textAlign: 'center' }}>
@@ -38,7 +30,7 @@ export function SignOutButton({accountId, onClick}) {
 export function EducationalText() {
   return (
     <>
-      <p>
+      {/* <p>
         Look at that! A Hello World app! This greeting is stored on the NEAR blockchain. Check it out:
       </p>
       <ol>
@@ -53,7 +45,7 @@ export function EducationalText() {
       <hr />
       <p>
         To keep learning, check out <a target="_blank" rel="noreferrer" href="https://docs.near.org">the NEAR docs</a> or look through some <a target="_blank" rel="noreferrer" href="https://examples.near.org">example apps</a>.
-      </p>
+      </p> */}
     </>
   );
 }

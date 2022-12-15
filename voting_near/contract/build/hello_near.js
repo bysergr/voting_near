@@ -874,12 +874,20 @@ let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec
     //primero buscamos la propuesta
     let propuestas = this.proposals;
     let p = propuestas.get(id);
-    p.decided = true;
-    log('se ha definido ' + p.text + ' como ganadora');
-    // near.log(p.setDecided());
-    //actualizamos la lista
-    propuestas.replace(id, p);
+    let state = false;
+    if (p.sender == predecessorAccountId()) {
+      //solamente la persona que la crea puede finalizarla
+      p.decided = true;
+      log('se ha definido "' + p.text + '" como ganadora');
+      // near.log(p.setDecided());
+      //actualizamos la lista
+      propuestas.replace(id, p);
+      state = true;
+    } else {
+      log('No eres la persona que creo la propuesta no puedes finalizarla');
+    }
     this.proposals = propuestas;
+    return state;
   }
   vote_for({
     id,

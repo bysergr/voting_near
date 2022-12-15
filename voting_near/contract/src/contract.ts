@@ -20,17 +20,26 @@ class VotingNear {
   }
 
   @call({})
-  set_winner({id}:{id:number}) {
+  set_winner({id}:{id:number}): boolean {
     //near.log(this.proposals.get(id).setDecided())
     //primero buscamos la propuesta
     let propuestas = this.proposals;
     let p = propuestas.get(id);
-    p.decided= true;
+    let state = false
+    if(p.sender == near.predecessorAccountId()){
+      //solamente la persona que la crea puede finalizarla
+      p.decided= true;
     near.log('se ha definido "'+ p.text + '" como ganadora')
    // near.log(p.setDecided());
     //actualizamos la lista
     propuestas.replace(id,p);
+    state=true;
+    }
+    else {
+      near.log('No eres la persona que creo la propuesta no puedes finalizarla')
+    }
     this.proposals = propuestas;
+    return state;
   }
 
   @call({})
