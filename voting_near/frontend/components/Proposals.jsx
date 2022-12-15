@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Proposals({ proposals }) {  
+export default function Proposals({ proposals ,wallet}) {  
   if(proposals.length === 0 ){
    return (
     <>
@@ -34,6 +34,8 @@ export default function Proposals({ proposals }) {
             <br />
             <strong>Option 1:</strong> {contarPorOpcion(1, p)}
             <strong> - Option 2:</strong> {contarPorOpcion(2, p)}
+
+            button if is owner nut i don't know
           </p>
         </div>
       ))}

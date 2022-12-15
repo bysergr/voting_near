@@ -1,5 +1,6 @@
 import 'regenerator-runtime/runtime';
 import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 import './assets/global.css';
 
@@ -40,6 +41,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
+        toast('Created the a new proposal');
       });
   }
 
@@ -53,8 +55,9 @@ export default function App({ isSignedIn, contractId, wallet }) {
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
+        toast('You have already voted');
       });
-      alert('You have already voted');
+      
     //}
     //else{
       //alert('Utiliza un numero valido para votar')
@@ -76,6 +79,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
+        toast('Finish the proposal');
       });
   }
 
@@ -101,7 +105,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
             </button>
           </div>
         </form>
-      <Proposals proposals={valueFromBlockchain} />
+      <Proposals proposals={valueFromBlockchain} wallet = {wallet} />
       <h3>
          Vote for  a proposal:
         </h3>
@@ -130,8 +134,9 @@ export default function App({ isSignedIn, contractId, wallet }) {
           </div>
         </form>
       <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
-         
-       
+      <Toaster   
+      position="top-center"
+      reverseOrder={false} /> 
       </main> 
     </>
   );
