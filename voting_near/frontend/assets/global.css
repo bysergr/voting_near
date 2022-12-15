@@ -24,9 +24,44 @@ body {
   padding: 1em;
 }
 
+.formularioBonito{
+  /*display: flex;*/
+  border:2px white solid;
+  border-radius: 2%;
+  margin:2%;
+  /*align-items: flex-start; */
+}
+
+.formularioBonito label{
+  margin-bottom: auto;
+}
+
+.inputDecente{
+  width: 70%;
+  margin-right: 2%;
+}
+
 main {
   margin: 0 auto;
   max-width: 26em;
+}
+
+.card {
+  background-color: #232323;
+  padding: 10px 20px;
+  margin: 35px 0;
+  border-radius: 16px;
+  border: solid 1px var(--gray);
+}
+
+.cardTitle {
+  text-align: center;
+  display: block;
+}
+
+.outB {
+  display: block;
+  margin: 0 auto;
 }
 
 main.please-wait {

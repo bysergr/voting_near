@@ -21,15 +21,23 @@ export default function Proposals({ proposals }) {
   return (
     <>
       <h2>Proposals</h2>
-      {proposals.map((p, i) =>
-        // TODO: format as cards, add timestamp
-        <p key={i}>
-          Number of proposal: <strong>{p.proposalId}</strong><br/> <strong>Sent by:</strong> {p.sender}<br/>
-          {p.text} 
-          <br/>
-          <strong>Votes:</strong> Option 1 {contarPorOpcion(1,p)} Option2 {contarPorOpcion(2,p)} Option3 {contarPorOpcion(3,p)}
-        </p>
-      )}
+      {proposals.map((p, i) => (
+        <div className="card">
+          <p key={i}>
+            <strong className="cardTitle">PROPOSAL {p.proposal_id}</strong>
+            <br /> <strong>Sent by:</strong> {p.sender}
+            <br />
+            <strong>Text: </strong>
+            {p.text}
+            <br />
+            <strong>Votes:</strong>
+            <br />
+            <strong>Option 1:</strong> {contarPorOpcion(1, p)}
+            <strong> - Option 2:</strong> {contarPorOpcion(2, p)}
+            <strong> - Option 3:</strong> {contarPorOpcion(3, p)}
+          </p>
+        </div>
+      ))}
     </>
   );
 }

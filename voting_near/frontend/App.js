@@ -35,7 +35,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
     const { proposalInput } = e.target.elements;
     
     // use the wallet to send the greeting to the contract
-    await wallet.callMethod({contractId:contractId, method: 'set_proposal', args: { text: greetingInput.value }  })
+    await wallet.callMethod({contractId:contractId, method: 'set_proposal', args: { text: proposalInput.value }  })
       .then(async () => {return getProposal();})
       .then(setValueFromBlockchain)
       .finally(() => {
@@ -77,22 +77,18 @@ export default function App({ isSignedIn, contractId, wallet }) {
 
   return (
     <>
-      <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
       <main className={uiPleaseWait ? 'please-wait' : ''}>
-      
-      <Proposals proposals={valueFromBlockchain} />
-
-{/*         
-        <h1>
-          The contract says: <span className="greeting">{valueFromBlockchain}</span>
+      <h1>
+         Propose your idea here:
         </h1>
-        <form onSubmit={changeGreeting} className="change">
-          <label>Change greeting:</label>
+        <form onSubmit={addProposal} className='formularioBonito' >
+          <label>Add a new proposal:</label>
           <div>
             <input
               autoComplete="off"
-              defaultValue={valueFromBlockchain}
-              id="greetingInput"
+              defaultValue="A new house for the puppies"
+              id="proposalInput"
+              className='inputDecente'
             />
             <button>
               <span>Save</span>
@@ -100,7 +96,11 @@ export default function App({ isSignedIn, contractId, wallet }) {
             </button>
           </div>
         </form>
-        <EducationalText/> */}
+      <Proposals proposals={valueFromBlockchain} />
+
+      <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
+         
+       
       </main> 
     </>
   );

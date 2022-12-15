@@ -27114,6 +27114,8 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _globalCss = require("./assets/global.css");
 var _uiComponents = require("./ui-components");
+var _proposals = require("./components/Proposals");
+var _proposalsDefault = parcelHelpers.interopDefault(_proposals);
 var _s = $RefreshSig$();
 function App({ isSignedIn , contractId , wallet  }) {
     _s();
@@ -27144,7 +27146,7 @@ function App({ isSignedIn , contractId , wallet  }) {
             contractId: contractId,
             method: "set_proposal",
             args: {
-                text: greetingInput.value
+                text: proposalInput.value
             }
         }).then(async ()=>{
             return getProposal();
@@ -27197,9 +27199,90 @@ function App({ isSignedIn , contractId , wallet  }) {
         });
     }
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "Hola mundo"
-        }, void 0, false, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
+            className: uiPleaseWait ? "please-wait" : "",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                    children: "Propose your idea here:"
+                }, void 0, false, {
+                    fileName: "App.js",
+                    lineNumber: 81,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                    onSubmit: addProposal,
+                    className: "formularioBonito",
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                            children: "Add a new proposal:"
+                        }, void 0, false, {
+                            fileName: "App.js",
+                            lineNumber: 85,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                    autoComplete: "off",
+                                    defaultValue: "A new house for the puppies",
+                                    id: "proposalInput",
+                                    className: "inputDecente"
+                                }, void 0, false, {
+                                    fileName: "App.js",
+                                    lineNumber: 87,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                    children: [
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            children: "Save"
+                                        }, void 0, false, {
+                                            fileName: "App.js",
+                                            lineNumber: 94,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "loader"
+                                        }, void 0, false, {
+                                            fileName: "App.js",
+                                            lineNumber: 95,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "App.js",
+                                    lineNumber: 93,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "App.js",
+                            lineNumber: 86,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "App.js",
+                    lineNumber: 84,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _proposalsDefault.default), {
+                    proposals: valueFromBlockchain
+                }, void 0, false, {
+                    fileName: "App.js",
+                    lineNumber: 99,
+                    columnNumber: 7
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _uiComponents.SignOutButton), {
+                    accountId: wallet.accountId,
+                    onClick: ()=>wallet.signOut()
+                }, void 0, false, {
+                    fileName: "App.js",
+                    lineNumber: 101,
+                    columnNumber: 7
+                }, this)
+            ]
+        }, void 0, true, {
             fileName: "App.js",
             lineNumber: 80,
             columnNumber: 7
@@ -27217,7 +27300,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","regenerator-runtime/runtime":"dXNgZ","react":"21dqq","./assets/global.css":"1hP5v","./ui-components":"4LIXu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dXNgZ":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","regenerator-runtime/runtime":"dXNgZ","react":"21dqq","./assets/global.css":"1hP5v","./ui-components":"4LIXu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/Proposals":"4iXUD"}],"dXNgZ":[function(require,module,exports) {
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -27815,50 +27898,26 @@ parcelHelpers.export(exports, "EducationalText", ()=>EducationalText);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-function SignInPrompt({ greeting , onClick  }) {
+function SignInPrompt({ onClick  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("main", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: [
-                    "The contract says: ",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        className: "greeting",
-                        children: greeting
-                    }, void 0, false, {
-                        fileName: "ui-components.js",
-                        lineNumber: 7,
-                        columnNumber: 28
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "ui-components.js",
-                lineNumber: 6,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Welcome to votingNear"
             }, void 0, false, {
                 fileName: "ui-components.js",
-                lineNumber: 9,
+                lineNumber: 6,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "Your contract is storing several proposals in the NEAR blockchain. To vote them or propose a new one, you need to sign in using the NEAR Wallet. It is very simple, just use the button below."
             }, void 0, false, {
                 fileName: "ui-components.js",
-                lineNumber: 12,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: 'Do not worry, this app runs in the test network ("testnet"). It works just like the main network ("mainnet"), but using NEAR Tokens that are only for testing!'
-            }, void 0, false, {
-                fileName: "ui-components.js",
-                lineNumber: 17,
+                lineNumber: 9,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                 fileName: "ui-components.js",
-                lineNumber: 22,
+                lineNumber: 14,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -27870,12 +27929,12 @@ function SignInPrompt({ greeting , onClick  }) {
                     children: "Sign in with NEAR Wallet"
                 }, void 0, false, {
                     fileName: "ui-components.js",
-                    lineNumber: 24,
+                    lineNumber: 16,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "ui-components.js",
-                lineNumber: 23,
+                lineNumber: 15,
                 columnNumber: 7
             }, this)
         ]
@@ -27898,177 +27957,13 @@ function SignOutButton({ accountId , onClick  }) {
         ]
     }, void 0, true, {
         fileName: "ui-components.js",
-        lineNumber: 32,
+        lineNumber: 24,
         columnNumber: 5
     }, this);
 }
 _c1 = SignOutButton;
 function EducationalText() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: "Look at that! A Hello World app! This greeting is stored on the NEAR blockchain. Check it out:"
-            }, void 0, false, {
-                fileName: "ui-components.js",
-                lineNumber: 41,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ol", {
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: [
-                            "Look in ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "frontend/App.js"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 46,
-                                columnNumber: 19
-                            }, this),
-                            " - you'll see ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "getGreeting"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 46,
-                                columnNumber: 61
-                            }, this),
-                            " and ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "setGreeting"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 46,
-                                columnNumber: 90
-                            }, this),
-                            " being called on ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "contract"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 46,
-                                columnNumber: 131
-                            }, this),
-                            ". What's this?"
-                        ]
-                    }, void 0, true, {
-                        fileName: "ui-components.js",
-                        lineNumber: 45,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: [
-                            "Ultimately, this ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "contract"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 49,
-                                columnNumber: 28
-                            }, this),
-                            " code is defined in ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "./contract"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 49,
-                                columnNumber: 69
-                            }, this),
-                            " – this is the source code for your ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                target: "_blank",
-                                rel: "noreferrer",
-                                href: "https://docs.near.org/docs/develop/contracts/overview",
-                                children: "smart contract"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 49,
-                                columnNumber: 128
-                            }, this),
-                            "."
-                        ]
-                    }, void 0, true, {
-                        fileName: "ui-components.js",
-                        lineNumber: 48,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: [
-                            "When you run ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "npm run deploy"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 51,
-                                columnNumber: 24
-                            }, this),
-                            ", the code in ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "./contract"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 51,
-                                columnNumber: 65
-                            }, this),
-                            " gets deployed to the NEAR testnet. You can see how this happens by looking in ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("code", {
-                                children: "package.json"
-                            }, void 0, false, {
-                                fileName: "ui-components.js",
-                                lineNumber: 51,
-                                columnNumber: 167
-                            }, this),
-                            "."
-                        ]
-                    }, void 0, true, {
-                        fileName: "ui-components.js",
-                        lineNumber: 50,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "ui-components.js",
-                lineNumber: 44,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("hr", {}, void 0, false, {
-                fileName: "ui-components.js",
-                lineNumber: 53,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                children: [
-                    "To keep learning, check out ",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                        target: "_blank",
-                        rel: "noreferrer",
-                        href: "https://docs.near.org",
-                        children: "the NEAR docs"
-                    }, void 0, false, {
-                        fileName: "ui-components.js",
-                        lineNumber: 55,
-                        columnNumber: 37
-                    }, this),
-                    " or look through some ",
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                        target: "_blank",
-                        rel: "noreferrer",
-                        href: "https://examples.near.org",
-                        children: "example apps"
-                    }, void 0, false, {
-                        fileName: "ui-components.js",
-                        lineNumber: 55,
-                        columnNumber: 141
-                    }, this),
-                    "."
-                ]
-            }, void 0, true, {
-                fileName: "ui-components.js",
-                lineNumber: 54,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {}, void 0, false);
 }
 _c2 = EducationalText;
 var _c, _c1, _c2;
@@ -28245,7 +28140,153 @@ function registerExportsForReactRefresh(module1) {
     }
 }
 
-},{"react-refresh/runtime":"786KC"}],"dg9wB":[function(require,module,exports) {
+},{"react-refresh/runtime":"786KC"}],"4iXUD":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$fbbc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fbbc.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+function Proposals({ proposals  }) {
+    if (proposals.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            children: "At this moment there are no proposals"
+        }, void 0, false, {
+            fileName: "components/Proposals.jsx",
+            lineNumber: 7,
+            columnNumber: 7
+        }, this)
+    }, void 0, false);
+    function contarPorOpcion(num, proposal) {
+        let numero = 0;
+        proposal.votes.map((index)=>{
+            if (index.voteInfo == num) numero += 1;
+        });
+        return numero;
+    }
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: "Proposals"
+            }, void 0, false, {
+                fileName: "components/Proposals.jsx",
+                lineNumber: 23,
+                columnNumber: 7
+            }, this),
+            proposals.map((p, i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                    className: "card",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                children: "Number of proposal: "
+                            }, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 28,
+                                columnNumber: 13
+                            }, this),
+                            p.proposal_id,
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 30,
+                                columnNumber: 13
+                            }, this),
+                            " ",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                children: "Sent by:"
+                            }, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 30,
+                                columnNumber: 20
+                            }, this),
+                            " ",
+                            p.sender,
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 31,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                children: "Text: "
+                            }, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 32,
+                                columnNumber: 13
+                            }, this),
+                            p.text,
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 34,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                children: "Votes:"
+                            }, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 35,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 36,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                children: "Option 1:"
+                            }, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 37,
+                                columnNumber: 13
+                            }, this),
+                            " ",
+                            contarPorOpcion(1, p),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                children: " - Option 2:"
+                            }, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 38,
+                                columnNumber: 13
+                            }, this),
+                            " ",
+                            contarPorOpcion(2, p),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                                children: " - Option 3:"
+                            }, void 0, false, {
+                                fileName: "components/Proposals.jsx",
+                                lineNumber: 39,
+                                columnNumber: 13
+                            }, this),
+                            " ",
+                            contarPorOpcion(3, p)
+                        ]
+                    }, i, true, {
+                        fileName: "components/Proposals.jsx",
+                        lineNumber: 27,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "components/Proposals.jsx",
+                    lineNumber: 25,
+                    columnNumber: 9
+                }, this))
+        ]
+    }, void 0, true);
+}
+exports.default = Proposals;
+_c = Proposals;
+var _c;
+$RefreshReg$(_c, "Proposals");
+
+  $parcel$ReactRefreshHelpers$fbbc.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"dg9wB":[function(require,module,exports) {
 /* A helper file that simplifies using the wallet selector */ // near api js
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
