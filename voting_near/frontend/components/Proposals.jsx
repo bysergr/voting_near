@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Proposals({ proposals ,wallet}) {  
+export default function Proposals({ proposals ,wallet,endMethod}) {  
   if(proposals.length === 0 ){
    return (
     <>
@@ -11,6 +11,7 @@ export default function Proposals({ proposals ,wallet}) {
   
   function contarPorOpcion (num, proposal){
     let numero = 0;
+    
     proposal.votes.map((index)=>{
       if(index.voteInfo == num){
         numero+=1;
@@ -20,7 +21,7 @@ export default function Proposals({ proposals ,wallet}) {
   }
   return (
     <>
-      <h2>Proposals</h2>
+      <h2>Proposals </h2>
       {proposals.map((p, i) => (
         <div className="card">
           <p key={i}>
@@ -34,8 +35,7 @@ export default function Proposals({ proposals ,wallet}) {
             <br />
             <strong>Option 1:</strong> {contarPorOpcion(1, p)}
             <strong> - Option 2:</strong> {contarPorOpcion(2, p)}
-
-            button if is owner but i don't know
+            {wallet.accountId == p.sender && <button className='endButton' onclick={endMethod}>End proposal </button>}
           </p>
         </div>
       ))}

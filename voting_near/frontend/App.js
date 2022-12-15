@@ -41,7 +41,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
-        toast('Created the a new proposal');
+        toast('Created a new Proposal');
       });
   }
 
@@ -55,7 +55,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
-        toast('You have already voted');
+        toast('You Voted');
       });
       
     //}
@@ -79,7 +79,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
-        toast('Finish the proposal');
+        toast('End the Proposal');
       });
   }
 
@@ -105,7 +105,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
             </button>
           </div>
         </form>
-      <Proposals proposals={valueFromBlockchain} wallet = {wallet} />
+      <Proposals proposals={valueFromBlockchain} wallet = {wallet} endMethod={endProposal} />
       <h3>
          Vote for  a proposal:
         </h3>

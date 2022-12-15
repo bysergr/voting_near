@@ -49,7 +49,7 @@ body {
 .inputDecente{
   width: 100%;
   margin:auto;
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 }
 
 .botonDecente{
@@ -190,6 +190,11 @@ button {
   padding: 0.3em 0.75em;
   transition: transform 30ms;
 }
+
+.endButton{
+ margin-left: 2%;
+}
+
 button:hover, button:focus {
   box-shadow: 0 0 10em rgba(255, 255, 255, 0.2) inset;
 }

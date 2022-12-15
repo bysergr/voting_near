@@ -15,8 +15,5 @@
   },
   "devDependencies": {
     "near-cli": "^3.3.0"
-  },
-  "dependencies": {
-    "react-hot-toast": "^2.4.0"
   }
 }
