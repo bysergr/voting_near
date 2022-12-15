@@ -90,9 +90,9 @@ export default function App({ isSignedIn, contractId, wallet }) {
               id="proposalInput"
               className='inputDecente'
             />
-            <button>
+            <button className='botonDecente'>
               <span>Save</span>
-              <div className="loader"></div>
+     
             </button>
           </div>
         </form>

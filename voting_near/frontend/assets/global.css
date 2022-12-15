@@ -42,12 +42,19 @@ body {
 
 .formularioBonito div{
   display: flex;
+  width: 80%;
   flex-direction: column;
 }
 
 .inputDecente{
-  width: 70%;
-  margin-right: 2%;
+  width: 100%;
+  margin:auto;
+  margin-bottom: 2%;
+}
+
+.botonDecente{
+  width: 40%;
+  margin: auto;
 }
 
 main {

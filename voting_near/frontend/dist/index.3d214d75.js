@@ -27233,23 +27233,15 @@ function App({ isSignedIn , contractId , wallet  }) {
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            children: "Save"
-                                        }, void 0, false, {
-                                            fileName: "App.js",
-                                            lineNumber: 94,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                            className: "loader"
-                                        }, void 0, false, {
-                                            fileName: "App.js",
-                                            lineNumber: 95,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
+                                    className: "botonDecente",
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: "Save"
+                                    }, void 0, false, {
+                                        fileName: "App.js",
+                                        lineNumber: 94,
+                                        columnNumber: 15
+                                    }, this)
+                                }, void 0, false, {
                                     fileName: "App.js",
                                     lineNumber: 93,
                                     columnNumber: 13
