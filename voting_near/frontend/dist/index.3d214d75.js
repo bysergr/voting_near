@@ -27270,8 +27270,7 @@ function App({ isSignedIn , contractId , wallet  }) {
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _proposalsDefault.default), {
                     proposals: valueFromBlockchain,
-                    wallet: wallet,
-                    endMethod: endProposal
+                    wallet: wallet
                 }, void 0, false, {
                     fileName: "App.js",
                     lineNumber: 108,
@@ -28912,13 +28911,26 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-function Proposals({ proposals , wallet , endMethod  }) {
+function Proposals({ proposals , wallet  }) {
+    async function endProposal(e) {
+        e.preventDefault();
+        setUiPleaseWait(true);
+        const { idProposal  } = e.target.elements;
+        await wallet.callMethod({
+            contractId: contractId,
+            method: "set_winner",
+            args: {
+                text: idProposal.value
+            }
+        });
+        toast("End the Proposal");
+    }
     if (proposals.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
             children: "At this moment there are no proposals"
         }, void 0, false, {
             fileName: "components/Proposals.jsx",
-            lineNumber: 7,
+            lineNumber: 18,
             columnNumber: 7
         }, this)
     }, void 0, false);
@@ -28935,7 +28947,7 @@ function Proposals({ proposals , wallet , endMethod  }) {
                 children: "Proposals "
             }, void 0, false, {
                 fileName: "components/Proposals.jsx",
-                lineNumber: 24,
+                lineNumber: 35,
                 columnNumber: 7
             }, this),
             proposals.map((p, i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -28946,16 +28958,24 @@ function Proposals({ proposals , wallet , endMethod  }) {
                                 className: "cardTitle",
                                 children: [
                                     "PROPOSAL ",
-                                    p.proposal_id
+                                    p.proposal_id,
+                                    " - ",
+                                    p.decided == true && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                        children: "Ended"
+                                    }, void 0, false, {
+                                        fileName: "components/Proposals.jsx",
+                                        lineNumber: 39,
+                                        columnNumber: 92
+                                    }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 28,
+                                lineNumber: 39,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 29,
+                                lineNumber: 40,
                                 columnNumber: 13
                             }, this),
                             " ",
@@ -28963,46 +28983,46 @@ function Proposals({ proposals , wallet , endMethod  }) {
                                 children: "Sent by:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 29,
+                                lineNumber: 40,
                                 columnNumber: 20
                             }, this),
                             " ",
                             p.sender,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 30,
+                                lineNumber: 41,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                 children: "Text: "
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 31,
+                                lineNumber: 42,
                                 columnNumber: 13
                             }, this),
                             p.text,
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 33,
+                                lineNumber: 44,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                 children: "Votes:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 34,
+                                lineNumber: 45,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 35,
+                                lineNumber: 46,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                                 children: "Option 1:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 36,
+                                lineNumber: 47,
                                 columnNumber: 13
                             }, this),
                             " ",
@@ -29011,29 +29031,29 @@ function Proposals({ proposals , wallet , endMethod  }) {
                                 children: " - Option 2:"
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 37,
+                                lineNumber: 48,
                                 columnNumber: 13
                             }, this),
                             " ",
                             contarPorOpcion(2, p),
-                            wallet.accountId == p.sender && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                            wallet.accountId == p.sender && p.decided == false && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                 className: "endButton",
-                                onclick: endMethod,
+                                onclick: endProposal,
                                 children: "End proposal "
                             }, void 0, false, {
                                 fileName: "components/Proposals.jsx",
-                                lineNumber: 38,
-                                columnNumber: 46
+                                lineNumber: 49,
+                                columnNumber: 69
                             }, this)
                         ]
                     }, i, true, {
                         fileName: "components/Proposals.jsx",
-                        lineNumber: 27,
+                        lineNumber: 38,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "components/Proposals.jsx",
-                    lineNumber: 26,
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this))
         ]

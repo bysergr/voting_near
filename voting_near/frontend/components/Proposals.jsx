@@ -1,6 +1,17 @@
 import React from 'react';
 
-export default function Proposals({ proposals ,wallet, endProposal}) {  
+export default function Proposals({ proposals ,wallet}) { 
+
+  async function endProposal(e){
+    e.preventDefault();
+    setUiPleaseWait(true);
+    const { idProposal } = e.target.elements;
+    
+    await wallet.callMethod({contractId:contractId, method: 'set_winner', args: { text: idProposal.value }  })
+        toast('End the Proposal');
+    
+  }
+
   if(proposals.length === 0 ){
    return (
     <>

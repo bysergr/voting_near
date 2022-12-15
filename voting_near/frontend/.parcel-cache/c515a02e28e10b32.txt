@@ -6089,7 +6089,7 @@
 152/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/qrcode-modal/node_modules/@walletconnect/heartbeat/dist/cjs/heartbeat.js.map1671136145000000000 0
 102/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@ledgerhq/hw-transport/lib/Transport.d.ts1671136137000000000 0
 116/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@parcel/transformer-posthtml/lib/PostHTMLTransformer.js1671136159000000000 0
-72/mnt/c/nearNCD/voting_near/voting_near/frontend/components/Proposals.jsx1671138563648276300 0
+72/mnt/c/nearNCD/voting_near/voting_near/frontend/components/Proposals.jsx1671140344448715800 0
 147/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@near-wallet-selector/core/node_modules/rxjs/dist/types/internal/operators/window.d.ts1671136137000000000 0
 109/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/jsonrpc-utils/dist/esm/index.d.ts1671136142000000000 0
 97/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/msgpackr/dist/unpack-no-eval.cjs.map1671136161000000000 0
@@ -20203,7 +20203,7 @@
 99/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/term-size/vendor/windows/term-size.exe1671136155000000000 0
 142/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@near-wallet-selector/core/node_modules/rxjs/dist/esm/internal/ajax/errors.js.map1671136137000000000 0
 82/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/terser/bin/terser.mjs1671136161000000000 0
-54/mnt/c/nearNCD/voting_near/voting_near/frontend/App.js1671138477213823100 0
+54/mnt/c/nearNCD/voting_near/voting_near/frontend/App.js1671140247877625600 0
 119/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/core/dist/types/controllers/subscriber.d.ts1671136146000000000 0
 93/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/rxjs/internal/scheduler/async.js1670994175000000000 0
 80/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/terser/CHANGELOG.md1671136161000000000 0

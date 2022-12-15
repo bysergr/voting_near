@@ -45,14 +45,14 @@ class VotingNear {
     //near.log(this.proposals.get(id).setDecided())
     //primero buscamos la propuesta
     let propuestas = this.proposals;
-    let state = false
-    for(let i=0; i<propuestas.length;i++){
+    let state = false;
+    for(let i=0; i<propuestas.length;i++) {
       near.log('buscando elemento');
       if(propuestas.get(i).proposal_id == id && propuestas.get(i).sender == near.predecessorAccountId()){
        let p = propuestas.get(i);
-       propuestas.replace(i,p);
-       p.decided= true; 
-        near.log('encontrado')
+       p.decided= true;
+       propuestas.replace(i,p); 
+       near.log('encontrado')
         state=true;
       }
     }

@@ -899,8 +899,8 @@ let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec
       log('buscando elemento');
       if (propuestas.get(i).proposal_id == id && propuestas.get(i).sender == predecessorAccountId()) {
         let p = propuestas.get(i);
-        propuestas.replace(i, p);
         p.decided = true;
+        propuestas.replace(i, p);
         log('encontrado');
         state = true;
       }
