@@ -21,7 +21,16 @@ class VotingNear {
 
   @call({})
   set_winner({id}:{id:number}) {
-    near.log(this.proposals.get(id).setDecided())
+    //near.log(this.proposals.get(id).setDecided())
+    //primero buscamos la propuesta
+    let propuestas = this.proposals;
+    let p = propuestas.get(id);
+    p.decided= true;
+    near.log('se ha definido "'+ p.text + '" como ganadora')
+   // near.log(p.setDecided());
+    //actualizamos la lista
+    propuestas.replace(id,p);
+    this.proposals = propuestas;
   }
 
   @call({})

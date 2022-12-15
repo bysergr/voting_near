@@ -870,7 +870,16 @@ let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec
   set_winner({
     id
   }) {
-    log(this.proposals.get(id).setDecided());
+    //near.log(this.proposals.get(id).setDecided())
+    //primero buscamos la propuesta
+    let propuestas = this.proposals;
+    let p = propuestas.get(id);
+    p.decided = true;
+    log('se ha definido ' + p.text + ' como ganadora');
+    // near.log(p.setDecided());
+    //actualizamos la lista
+    propuestas.replace(id, p);
+    this.proposals = propuestas;
   }
   vote_for({
     id,
@@ -898,6 +907,8 @@ let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec
           });
           if (!votado) {
             p.votes.push(new Vote(predecessorAccountId(), voto));
+            //para que la votacion se refleje debemos reemplazar la propuesta vieja
+            //por la propuesta con el push realizado
             propuestas.replace(i, p);
             log(`${id} voted`);
           }
