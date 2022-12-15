@@ -6089,7 +6089,7 @@
 152/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/qrcode-modal/node_modules/@walletconnect/heartbeat/dist/cjs/heartbeat.js.map1671136145000000000 0
 102/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@ledgerhq/hw-transport/lib/Transport.d.ts1671136137000000000 0
 116/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@parcel/transformer-posthtml/lib/PostHTMLTransformer.js1671136159000000000 0
-72/mnt/c/nearNCD/voting_near/voting_near/frontend/components/Proposals.jsx1671140344448715800 0
+72/mnt/c/nearNCD/voting_near/voting_near/frontend/components/Proposals.jsx1671141377727430600 0
 147/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@near-wallet-selector/core/node_modules/rxjs/dist/types/internal/operators/window.d.ts1671136137000000000 0
 109/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/jsonrpc-utils/dist/esm/index.d.ts1671136142000000000 0
 97/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/msgpackr/dist/unpack-no-eval.cjs.map1671136161000000000 0
@@ -6864,7 +6864,7 @@
 163/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/sign-client/node_modules/@walletconnect/keyvaluestorage/dist/cjs/node-js/index.d.ts.map1671126713622001200 0
 145/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@near-wallet-selector/core/node_modules/rxjs/dist/esm5/internal/operators/endWith.js1671136137000000000 0
 97/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/rxjs/src/add/observable/fromEvent.ts1670994175000000000 0
-70/mnt/c/nearNCD/voting_near/voting_near/frontend/dist/index.3d214d75.js1671137795771379100 0
+70/mnt/c/nearNCD/voting_near/voting_near/frontend/dist/index.3d214d75.js1671141478393090100 0
 140/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@ampproject/remapping/node_modules/@jridgewell/gen-mapping/dist/gen-mapping.mjs1671136153000000000 0
 122/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@babel/types/lib/builders/typescript/createTSUnionType.js.map1671136135000000000 0
 105/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/sign-client/dist/index.umd.js1671136142000000000 0
@@ -7080,7 +7080,7 @@
 109/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/caniuse-lite/data/features/css-default-pseudo.js1671052871000000000 0
 117/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/regenerate-unicode-properties/Script_Extensions/Adlam.js1671136137000000000 0
 125/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@babel/runtime/helpers/esm/classApplyDescriptorDestructureSet.js1671052903000000000 0
-74/mnt/c/nearNCD/voting_near/voting_near/frontend/dist/index.3d214d75.js.map1671137795943873600 0
+74/mnt/c/nearNCD/voting_near/voting_near/frontend/dist/index.3d214d75.js.map1671141478513463900 0
 106/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@babel/core/lib/transform-file-browser.js.map1671136153000000000 0
 84/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/rxjs/operator/expand.js1670994175000000000 0
 119/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/keyvaluestorage/dist/esm/node-js/index.d.ts1671136149000000000 0
@@ -8101,7 +8101,7 @@
 143/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@near-wallet-selector/core/node_modules/rxjs/dist/esm/internal/observable/range.js1671136137000000000 0
 81/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/cross-spawn/lib/util1671136350915723200 1
 132/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/types/node_modules/@walletconnect/time/dist/esm/index.js1671126708918429500 0
-47/mnt/c/nearNCD/voting_near/voting_near/frontend1671136489072651500 1
+47/mnt/c/nearNCD/voting_near/voting_near/frontend1671141332936798900 1
 168/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@parcel/node-resolver-core/test/fixture/node_modules/package-browser-alias/subfolder1/subfolder2/subfile.js1671136163000000000 0
 104/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@stablelib/random/lib/source/browser.js.map1671136150000000000 0
 159/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/qrcode-modal/node_modules/@walletconnect/keyvaluestorage/dist/cjs/shared/utils.d.ts1671136149000000000 0
@@ -11668,7 +11668,7 @@
 155/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@near-wallet-selector/core/node_modules/rxjs/dist/types/internal/operators/windowTime.d.ts.map1671136137000000000 0
 158/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@near-wallet-selector/core/node_modules/rxjs/dist/types/internal/observable/fromEventPattern.d.ts1671136137000000000 0
 85/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/multiformats/bases/base21671136151000000000 0
-52/mnt/c/nearNCD/voting_near/voting_near/frontend/dist1671137795954412400 1
+52/mnt/c/nearNCD/voting_near/voting_near/frontend/dist1671141478522992900 1
 115/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/jsonrpc-provider/dist/esm/provider.d.ts1671136144000000000 0
 103/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/rxjs/src/internal/operators/publishLast.ts1670994175000000000 0
 102/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/utils/dist/types/misc.d.ts1671136147000000000 0
@@ -20203,7 +20203,7 @@
 99/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/term-size/vendor/windows/term-size.exe1671136155000000000 0
 142/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@near-wallet-selector/core/node_modules/rxjs/dist/esm/internal/ajax/errors.js.map1671136137000000000 0
 82/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/terser/bin/terser.mjs1671136161000000000 0
-54/mnt/c/nearNCD/voting_near/voting_near/frontend/App.js1671140247877625600 0
+54/mnt/c/nearNCD/voting_near/voting_near/frontend/App.js1671141769346389200 0
 119/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/@walletconnect/core/dist/types/controllers/subscriber.d.ts1671136146000000000 0
 93/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/rxjs/internal/scheduler/async.js1670994175000000000 0
 80/mnt/c/nearNCD/voting_near/voting_near/frontend/node_modules/terser/CHANGELOG.md1671136161000000000 0

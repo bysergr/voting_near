@@ -72,16 +72,16 @@ export default function App({ isSignedIn, contractId, wallet }) {
   async function endProposal(e){
     e.preventDefault();
     setUiPleaseWait(true);
-    const { idProposal } = e.target.elements;
+    const { proposalInput } = e.target.elements;
     
-    await wallet.callMethod({contractId:contractId, method: 'set_winner', args: { text: idProposal.value }  })
+    let v = await wallet.callMethod({contractId:contractId, method: 'set_winner', args: { id: parseInt(proposalInput.value) }  })
       .then(async () => {return getProposal();})
       .then(setValueFromBlockchain)
       .finally(() => {
         setUiPleaseWait(false);
         toast('End the Proposal');
       });
-  }
+    }
 
 
   return (
@@ -130,6 +130,21 @@ export default function App({ isSignedIn, contractId, wallet }) {
             <button className='botonDecente'>
               <span>Vote</span>
      
+            </button>
+          </div>
+        </form>
+        <form onSubmit={endProposal} className='formularioBonito' >
+          <label>End a proposal:</label><br/>
+          <label>It will work only if you have added that proposal</label>
+          <div>
+            <input
+              autoComplete="off"
+              placeholder="Insert the Id of the proposal"
+              id="proposalInput"
+              className='inputDecente'
+            />
+            <button className='botonDecente'>
+              <span>End Proposal</span>
             </button>
           </div>
         </form>

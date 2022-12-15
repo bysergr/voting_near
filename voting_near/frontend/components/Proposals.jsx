@@ -1,16 +1,8 @@
 import React from 'react';
 
-export default function Proposals({ proposals ,wallet}) { 
+export default function Proposals({ proposals}) { 
 
-  async function endProposal(e){
-    e.preventDefault();
-    setUiPleaseWait(true);
-    const { idProposal } = e.target.elements;
-    
-    await wallet.callMethod({contractId:contractId, method: 'set_winner', args: { text: idProposal.value }  })
-        toast('End the Proposal');
-    
-  }
+  
 
   if(proposals.length === 0 ){
    return (
@@ -36,7 +28,7 @@ export default function Proposals({ proposals ,wallet}) {
       {proposals.map((p, i) => (
         <div className="card">
           <p key={i}>
-            <strong className="cardTitle">PROPOSAL {p.proposal_id} - {p.decided == true && <p>Ended</p>}</strong>
+            <strong className="cardTitle">PROPOSAL {p.proposal_id} {p.decided == true && <p>- Ended</p>}</strong>
             <br /> <strong>Sent by:</strong> {p.sender}
             <br />
             <strong>Text: </strong>
@@ -46,8 +38,6 @@ export default function Proposals({ proposals ,wallet}) {
             <br />
             <strong>Option 1:</strong> {contarPorOpcion(1, p)}
             <strong> - Option 2:</strong> {contarPorOpcion(2, p)} 
-            { wallet.accountId == p.sender && p.decided == false && <button className='endButton' onclick={endProposal}>End proposal </button>
-            }
           </p>
         </div>
       ))}
