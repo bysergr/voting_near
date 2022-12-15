@@ -27,7 +27,7 @@ export default function Proposals({ proposals }) {
           Number of proposal: <strong>{p.proposalId}</strong><br/> <strong>Sent by:</strong> {p.sender}<br/>
           {p.text} 
           <br/>
-          <strong>Votes:</strong> Option 1 {contarPorOpcion(1)} Option2 {contarPorOpcion(2)} Option3 {contarPorOpcion(3)}
+          <strong>Votes:</strong> Option 1 {contarPorOpcion(1,p)} Option2 {contarPorOpcion(2,p)} Option3 {contarPorOpcion(3,p)}
         </p>
       )}
     </>
