@@ -35,7 +35,7 @@ export default function Proposals({ proposals ,wallet}) {
             <strong>Option 1:</strong> {contarPorOpcion(1, p)}
             <strong> - Option 2:</strong> {contarPorOpcion(2, p)}
 
-            button if is owner nut i don't know
+            button if is owner but i don't know
           </p>
         </div>
       ))}
