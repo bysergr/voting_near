@@ -53,7 +53,7 @@ class VotingNear {
        p.decided= true;
        propuestas.replace(i,p); 
        near.log('encontrado')
-        state=true;
+       state=true;
       }
     }
     if(state==false) {
