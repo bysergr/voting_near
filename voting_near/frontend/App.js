@@ -4,7 +4,7 @@ import React from 'react';
 import './assets/global.css';
 
 import { EducationalText, SignInPrompt, SignOutButton } from './ui-components';
-
+import Proposals from './components/Proposals';
 
 export default function App({ isSignedIn, contractId, wallet }) {
   const [valueFromBlockchain, setValueFromBlockchain] = React.useState([]);
@@ -77,11 +77,12 @@ export default function App({ isSignedIn, contractId, wallet }) {
 
   return (
     <>
-      <h1>Hola mundo</h1>
-
-
-      {/* <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
+      <SignOutButton accountId={wallet.accountId} onClick={() => wallet.signOut()}/>
       <main className={uiPleaseWait ? 'please-wait' : ''}>
+      
+      <Proposals proposals={valueFromBlockchain} />
+
+{/*         
         <h1>
           The contract says: <span className="greeting">{valueFromBlockchain}</span>
         </h1>
@@ -99,8 +100,8 @@ export default function App({ isSignedIn, contractId, wallet }) {
             </button>
           </div>
         </form>
-        <EducationalText/>
-      </main> */}
+        <EducationalText/> */}
+      </main> 
     </>
   );
 }

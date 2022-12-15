@@ -48,6 +48,11 @@ class VotingNear {
     //recibe una id, la busca y vota por ella
     let propuestas = this.proposals;
     near.log('ejecutando')
+
+    if( voto > 3 || voto < 0) {
+      near.log(`${voto} not is valid`)
+      return votado
+    } 
     
     for(let i = 0; i < propuestas.length; i++){
       let p = propuestas.get(i);

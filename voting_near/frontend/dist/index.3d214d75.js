@@ -27117,52 +27117,97 @@ var _uiComponents = require("./ui-components");
 var _s = $RefreshSig$();
 function App({ isSignedIn , contractId , wallet  }) {
     _s();
-    const [valueFromBlockchain, setValueFromBlockchain] = (0, _reactDefault.default).useState();
+    const [valueFromBlockchain, setValueFromBlockchain] = (0, _reactDefault.default).useState([]);
     const [uiPleaseWait, setUiPleaseWait] = (0, _reactDefault.default).useState(true);
     // Get blockchian state once on component load
     (0, _reactDefault.default).useEffect(()=>{
-        getGreeting().then(setValueFromBlockchain).catch(alert).finally(()=>{
+        getProposal().then(setValueFromBlockchain).catch(alert).finally(()=>{
             setUiPleaseWait(false);
         });
+        console.log(valueFromBlockchain);
     }, []);
     /// If user not signed-in with wallet - show prompt
     if (!isSignedIn) // Sign-in flow will reload the page later
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _uiComponents.SignInPrompt), {
-        greeting: valueFromBlockchain,
         onClick: ()=>wallet.signIn()
     }, void 0, false, {
         fileName: "App.js",
-        lineNumber: 28,
+        lineNumber: 29,
         columnNumber: 12
     }, this);
-    function changeGreeting(e) {
+    async function addProposal(e) {
         e.preventDefault();
         setUiPleaseWait(true);
-        const { greetingInput  } = e.target.elements;
+        const { proposalInput  } = e.target.elements;
         // use the wallet to send the greeting to the contract
-        wallet.callMethod({
-            method: "set_greeting",
+        await wallet.callMethod({
+            contractId: contractId,
+            method: "set_proposal",
             args: {
-                message: greetingInput.value
-            },
-            contractId
+                text: greetingInput.value
+            }
         }).then(async ()=>{
-            return getGreeting();
+            return getProposal();
         }).then(setValueFromBlockchain).finally(()=>{
             setUiPleaseWait(false);
         });
     }
-    function getGreeting() {
-        // use the wallet to query the contract's greeting
-        return wallet.viewMethod({
-            method: "get_greeting",
-            contractId
+    async function voteProposal(e) {
+        e.preventDefault();
+        setUiPleaseWait(true);
+        const { proposalId , proposalVote  } = e.target.elements;
+        await wallet.callMethod({
+            contractId: contractId,
+            method: "vote_for",
+            args: {
+                id: proposalId.value,
+                voto: proposalVote.value
+            }
+        }).then(async ()=>{
+            return getProposal();
+        }).then(setValueFromBlockchain).finally(()=>{
+            setUiPleaseWait(false);
         });
     }
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {}, void 0, false);
+    async function getProposal(f = 0, t = 10) {
+        // View method
+        return await wallet.viewMethod({
+            contractId: contractId,
+            method: "get_proposal",
+            args: {
+                from_index: f,
+                limit: t
+            }
+        });
+    }
+    async function endProposal(e) {
+        e.preventDefault();
+        setUiPleaseWait(true);
+        const { idProposal  } = e.target.elements;
+        await wallet.callMethod({
+            contractId: contractId,
+            method: "set_winner",
+            args: {
+                text: idProposal.value
+            }
+        }).then(async ()=>{
+            return getProposal();
+        }).then(setValueFromBlockchain).finally(()=>{
+            setUiPleaseWait(false);
+        });
+    }
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+            children: "Hola mundo"
+        }, void 0, false, {
+            fileName: "App.js",
+            lineNumber: 80,
+            columnNumber: 7
+        }, this)
+    }, void 0, false);
 }
 exports.default = App;
-_s(App, "kS24ka7QLm9/xaObsbkZiE5+6uE=");
+_s(App, "DsNV0d/SlxaH/jCrLPeV7SacW8s=");
 _c = App;
 var _c;
 $RefreshReg$(_c, "App");

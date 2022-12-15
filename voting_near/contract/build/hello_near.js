@@ -897,6 +897,10 @@ let VotingNear = (_dec = NearBindgen({}), _dec2 = view(), _dec3 = call({}), _dec
     //recibe una id, la busca y vota por ella
     let propuestas = this.proposals;
     log('ejecutando');
+    if (voto > 3 || voto < 0) {
+      log(`${voto} not is valid`);
+      return votado;
+    }
     for (let i = 0; i < propuestas.length; i++) {
       let p = propuestas.get(i);
       log('pasa la agua');
