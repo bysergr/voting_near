@@ -1,0 +1,4 @@
+DEFINE_NEAR_METHOD(get_proposal)
+DEFINE_NEAR_METHOD(set_proposal)
+DEFINE_NEAR_METHOD(set_winner)
+DEFINE_NEAR_METHOD(vote_for)
