@@ -77,7 +77,7 @@ class VotingNear {
     
     for(let i = 0; i < propuestas.length; i++){
       let p = propuestas.get(i);
-      near.log('pasa la agua')
+
 
       if(p.proposal_id == id && !votado){
         if(!p.decided){

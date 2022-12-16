@@ -35,7 +35,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
     setUiPleaseWait(true);
     const { proposalInput } = e.target.elements;
     
-    // use the wallet to send the greeting to the contract
+    // use the wallet to send the proposal to the contract
     await wallet.callMethod({contractId:contractId, method: 'set_proposal', args: { text: proposalInput.value }  })
       .then(async () => {return getProposal();})
       .then(setValueFromBlockchain)
