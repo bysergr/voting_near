@@ -4,7 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 import "./assets/global.css";
 
-import { EducationalText, SignInPrompt, SignOutButton } from "./ui-components";
+import { SignInPrompt, SignOutButton } from "./components/ui-components";
 import Proposals from "./components/Proposals";
 
 export default function App({ isSignedIn, contractId, wallet }) {
@@ -55,7 +55,7 @@ export default function App({ isSignedIn, contractId, wallet }) {
     e.preventDefault();
     setUiPleaseWait(true);
     const { proposalId, proposalVote } = e.target.elements;
-    //if(parseInt(proposalId.value ) < valueFromBlockchain.length && parseInt(proposalVote)<3 && parseInt(proposalVote)>0){
+    
     await wallet
       .callMethod({
         contractId: contractId,
@@ -74,10 +74,6 @@ export default function App({ isSignedIn, contractId, wallet }) {
         toast("You Voted");
       });
 
-    //}
-    //else{
-    //alert('Utiliza un numero valido para votar')
-    //}
   }
 
   async function getProposal(f = 0, t = 10) {
